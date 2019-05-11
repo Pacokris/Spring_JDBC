@@ -21,19 +21,21 @@ import java.util.List;
 public class MagicSchoolController {
 
     private final static String DB_URL = "jdbc:mysql://localhost:3306/wizard?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-    private final static String DB_USER = "root";
-    private final static String DB_PASSWORD = "16Mai1981";
+    private final static String DB_USER = " ";
+    private final static String DB_PASSWORD = " ";
 
     @GetMapping("/api/schools")
-    public List<School> getSchools() {
+    public List<School> getSchools(@RequestParam(defaultValue = "%") String pays) {
         try (
                 Connection connection = DriverManager.getConnection(
                         DB_URL, DB_USER, DB_PASSWORD
                 );
                 PreparedStatement statement = connection.prepareStatement(
-                        "SELECT * FROM school"
+                        "SELECT * FROM school WHERE country LIKE ?"
                 );
-        ) {
+        ){
+                statement.setString(1, pays);
+
             try (
                     ResultSet resulSet = statement.executeQuery();
             ) {
