@@ -18,5 +18,6 @@ Démarrer une API pour récupérer des informations sur les écoles de magie :
   
     J'ai rajouté un dossier "postman" à la racine du projet pour visualiser:
   
-      - une requete qui retourne toutes les écoles de la table school.
-      - une requete qui retourne les écoles du pays demandé.
+      - une requete qui retourne toutes les écoles de la table school: http://localhost:8080/api/schools 
+      - une requete qui retourne les écoles du pays demandé: http://localhost:8080/api/schools?pays=France
+      
